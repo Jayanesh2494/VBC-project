@@ -26,31 +26,40 @@ const Home = () => {
       searchIcon.removeEventListener('click', search);
     };
   }, []);
-
+  const navOptions = [{
+    icon: homeIcon,
+    name: 'Home',
+    id : 1
+    },{
+      icon: bookIcon,
+      name: 'Courses',
+      id:2
+    }, {
+      icon : communityIcon,
+      name:"Community",
+      id :3
+    } ]
   return (
     <div className="App">
       <div className="blurred-image"></div>
       <div className="rectangle">
         <div className="title">xKill</div>
         <div className="line"></div>
-        <div className="home-container">
-          <div className="icon-box">
-            <img src={homeIcon} alt="Home Icon" />
-          </div>
-          <div className="home-text">Home</div>
+        <div id="nav-con">
+        {
+          navOptions.map((option) => {
+            return (
+              <div className="home-container" key={option.id}>
+                <div className="icon-box">
+                  <img src={option.icon} alt={option.name} />
+                </div>
+                <div className="home-text">{option.name}</div>
+            </div>
+            )
+          })
+        }
         </div>
-        <div className="home-container">
-          <div className="icon-box">
-            <img src={bookIcon} alt="Course Icon" />
-          </div>
-          <div className="home-text">Course</div>
-        </div>
-        <div className="home-container">
-          <div className="icon-box">
-            <img src={communityIcon} alt="Community Icon" />
-          </div>
-          <div className="home-text">Community</div>
-        </div>
+        
         <div className="background-image">
           <img src={backgroundImage} alt="Background Image" />
           <div className="help-icon">
